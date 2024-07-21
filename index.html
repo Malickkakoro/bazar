@@ -20,6 +20,33 @@
             document.getElementById('productLink').value = productLink;
             document.getElementById('productImage').src = `https://github.com/Malickkakoro/bazar/main/${productImage}`;
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('contactForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                emailjs.sendForm('service_yb2uwka', 'template_z43bbvx', '#contactForm')
+                    .then(function(response) {
+                        alert('Message envoyé avec succès!');
+                        document.getElementById('contactForm').reset(); // Réinitialiser les champs du formulaire
+                    }, function(error) {
+                        alert('Erreur lors de l\'envoi du message: ' + JSON.stringify(error));
+                    });
+            });
+
+            document.getElementById('orderForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                emailjs.sendForm('service_yb2uwka', 'template_uc2yx1f', '#orderForm')
+                    .then(function(response) {
+                        console.log('Réponse:', response); // Ajoute un log pour afficher la réponse
+                        alert('Commande envoyée avec succès!');
+                        document.getElementById('orderForm').reset(); // Réinitialiser les champs du formulaire
+                        $('#purchaseModal').modal('hide'); // Fermer le modal
+                    }, function(error) {
+                        console.error('Erreur:', error); // Ajoute un log pour afficher l'erreur
+                        alert('Erreur lors de l\'envoi de la commande: ' + JSON.stringify(error));
+                    });
+            });
+        });
     </script>
 </head>
 <body>

@@ -14,12 +14,37 @@
         (function(){
             emailjs.init("6KZ2fqddDfOhVH40C"); // Remplacez par votre USER_ID
         })();
-        
+
         function setProductDetails(productName, productLink, productImage) {
             document.getElementById('productName').value = productName;
             document.getElementById('productLink').value = productLink;
-            document.getElementById('productImage').src = `https://raw.githubusercontent.com/Malickkakoro/bazar/main/${productImage}`;
+            document.getElementById('productImage').src = `https://github.com/Malickkakoro/bazar/main/${productImage}`;
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('contactForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                emailjs.sendForm('service_yb2uwka', 'template_z43bbvx', '#contactForm')
+                    .then(function(response) {
+                        alert('Message envoyé avec succès!');
+                        document.getElementById('contactForm').reset(); // Réinitialiser les champs du formulaire
+                    }, function(error) {
+                        alert('Erreur lors de l\'envoi du message: ' + JSON.stringify(error));
+                    });
+            });
+
+            document.getElementById('orderForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                emailjs.sendForm('service_yb2uwka', 'template_uc2yx1f', '#orderForm')
+                    .then(function(response) {
+                        alert('Commande envoyée avec succès!');
+                        document.getElementById('orderForm').reset(); // Réinitialiser les champs du formulaire
+                        $('#purchaseModal').modal('hide'); // Fermer le modal
+                    }, function(error) {
+                        alert('Erreur lors de l\'envoi de la commande: ' + JSON.stringify(error));
+                    });
+            });
+        });
     </script>
 </head>
 <body>
@@ -79,14 +104,14 @@
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Précédent</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
+                    <span class="sr-only">Précédent</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Suivant</span>
-                </button>
+                    <span class="sr-only">Suivant</span>
+                </a>
             </div>
         </div>
     </section>
@@ -97,9 +122,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card mb-4">
-                        <div class="img-container">
-                            <img src="https://malickkakoro.github.io/bazar/chevi.jpg" class="card-img-top img-fluid" alt="Product 1">
-                        </div>
+                        <img src="https://malickkakoro.github.io/bazar/chevi.jpg" class="card-img-top img-fluid" alt="Product 1">
                         <div class="card-body">
                             <h5 class="card-title">Produit 1</h5>
                             <p class="card-text">Description du produit 1.</p>
@@ -109,9 +132,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card mb-4">
-                        <div class="img-container">
-                            <img src="https://malickkakoro.github.io/bazar/tete.png" class="card-img-top img-fluid" alt="Product 2">
-                        </div>
+                        <img src="https://malickkakoro.github.io/bazar/tete.png" class="card-img-top img-fluid" alt="Product 2">
                         <div class="card-body">
                             <h5 class="card-title">Produit 2</h5>
                             <p class="card-text">Description du produit 2.</p>
@@ -121,9 +142,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card mb-4">
-                        <div class="img-container">
-                            <img src="https://malickkakoro.github.io/bazar/tetete.png" class="card-img-top img-fluid" alt="Product 3">
-                        </div>
+                        <img src="https://malickkakoro.github.io/bazar/tetete.png" class="card-img-top img-fluid" alt="Product 3">
                         <div class="card-body">
                             <h5 class="card-title">Produit 3</h5>
                             <p class="card-text">Description du produit 3.</p>
@@ -138,10 +157,7 @@
     <section id="about" class="bg-light py-5">
         <div class="container text-center">
             <h2>À Propos de Moi</h2>
-            <p>Présentez-vous brièvement et mettez en avant vos compétences et vos intérêts.</p>
-            <div class="img-container rounded-circle mx-auto">
-                <img src="mon.jpg" class="img-fluid rounded-circle" alt="Votre photo">
-            </div>
+            <p>Présentez-vous brièvement et mettez en avant vos compétences et expériences.</p>
         </div>
     </section>
 
@@ -151,17 +167,17 @@
             <form id="contactForm">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="name">Nom:</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
+                        <label for="name">Nom</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
             </form>
@@ -173,48 +189,46 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="purchaseModalLabel">Formulaire d'Achat</h5>
+                    <h5 class="modal-title" id="purchaseModalLabel">Détails du Produit</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+                    <img id="productImage" class="img-fluid" alt="Image du produit">
+                    <h5 id="productName"></h5>
+                    <a id="productLink" href="#" class="btn btn-primary">Voir le Produit</a>
                     <form id="orderForm">
                         <div class="form-group">
-                            <label for="productName">Nom du Produit:</label>
-                            <input type="text" id="productName" name="productName" class="form-control" readonly>
+                            <label for="clientName">Nom</label>
+                            <input type="text" class="form-control" id="clientName" name="clientName" required>
                         </div>
                         <div class="form-group">
-                            <label for="productLink">Lien du Produit:</label>
-                            <input type="text" id="productLink" name="productLink" class="form-control" readonly>
+                            <label for="clientEmail">Email</label>
+                            <input type="email" class="form-control" id="clientEmail" name="clientEmail" required>
                         </div>
                         <div class="form-group">
-                            <label for="productImage">Image du Produit:</label>
-                            <img id="productImage" src="" alt="Image du Produit" class="img-fluid">
+                            <label for="clientPhone">Téléphone</label>
+                            <input type="tel" class="form-control" id="clientPhone" name="clientPhone" required>
                         </div>
-                        <div class="form-group">
-                            <label for="buyerName">Votre Nom:</label>
-                            <input type="text" id="buyerName" name="buyerName" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="buyerEmail">Votre Email:</label>
-                            <input type="email" id="buyerEmail" name="buyerEmail" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="buyerPhone">Votre Numéro de Téléphone:</label>
-                            <input type="tel" id="buyerPhone" name="buyerPhone" class="form-control" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                        <button type="submit" class="btn btn-primary">Commander</button>
                     </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Footer -->
+
     <footer class="bg-dark text-white py-3">
         <div class="container text-center">
             <p>&copy; 2024 [Votre Nom]. Tous droits réservés.</p>
+            <div>
+                <a href="https://twitter.com/[VotreCompteTwitter]" target="_blank" class="text-white">Twitter</a> |
+                <a href="https://facebook.com/[VotreCompteFacebook]" target="_blank" class="text-white">Facebook</a> |
+                <a href="https://linkedin.com/in/[VotreCompteLinkedIn]" target="_blank" class="text-white">LinkedIn</a>
+            </div>
         </div>
     </footer>
 </body>

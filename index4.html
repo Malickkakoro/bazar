@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio de [Votre Nom]</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("6KZ2fqddDfOhVH40C"); // Remplacez par votre USER_ID
+        })();
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Portfolio de [Votre Nom]</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">À Propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="container">
+            <h2>Bienvenue sur mon Portfolio !</h2>
+            <p>Je suis passionné par [votre domaine] et voici quelques-uns de mes projets.</p>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Mes Services</h2>
+            <div id="servicesCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="service-item">
+                            <h3>Création de Brochures</h3>
+                            <div class="service-content">
+                                <p>Brochures professionnelles pour promouvoir vos produits et services.</p>
+                                <img src="brochures.jpg" alt="Brochures">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="service-item">
+                            <h3>Conception de Flyers</h3>
+                            <div class="service-content">
+                                <p>Flyers attractifs pour attirer l'attention de vos clients.</p>
+                                <img src="flyers.jpg" alt="Flyers">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="service-item">
+                            <h3>Affiches Publicitaires</h3>
+                            <div class="service-content">
+                                <p>Affiches créatives pour vos campagnes publicitaires.</p>
+                                <img src="affiches.jpg" alt="Affiches Publicitaires">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#servicesCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#servicesCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>À Propos de Moi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Bonjour, je suis [Votre Nom], un passionné de [votre domaine]. Je possède des compétences en [compétence 1], [compétence 2], et [compétence 3]. Mon objectif est de [votre objectif ou mission]. N'hésitez pas à me contacter pour discuter de projets ou d'opportunités !</p>
+                </div>
+                <div class="about-image">
+                    <img src="votre-photo.jpg" alt="Votre photo">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contactez-moi</h2>
+            <form id="contactForm">
+                <label for="name">Nom:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit">Envoyer</button>
+            </form>
+            <p>Ou contactez-moi directement sur WhatsApp :</p>
+            <a href="https://wa.me/+224626928839" class="whatsapp-button" target="_blank">WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 [Votre Nom] - Portfolio. Tous droits réservés.</p>
+            <ul>
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <p>Suivez-moi sur les réseaux sociaux:</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
+                <a href="https://twitter.com/"><img src="https://upload.wikimedia.org/wikipedia/en/6/60/Twitter_Logo_as_of_2021.svg" alt="Twitter"></a>
+                <a href="https://www.linkedin.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Linkedin_icon.svg" alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

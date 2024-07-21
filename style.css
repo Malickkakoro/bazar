@@ -1,0 +1,181 @@
+/* Réinitialisation et styles globaux */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+.container {
+    max-width: 960px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul li {
+    margin: 0 1em;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 0.5em 1em;
+}
+
+nav ul li a:hover {
+    color: #ccc;
+}
+
+/* Sections */
+.section {
+    padding: 2em 0;
+}
+
+section#home {
+    background: url('bac4.jpg') no-repeat center center/cover;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+section#home h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+section#home p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+.service-item {
+    margin-bottom: 2em;
+}
+
+.service-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.service-item p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+section#about {
+    text-align: center;
+}
+
+section#about img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 1em;
+}
+
+/* Contact Form */
+#contactForm {
+    max-width: 600px;
+    margin: auto;
+}
+
+#contactForm label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+#contactForm input,
+#contactForm textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#contactForm textarea {
+    resize: vertical;
+}
+
+#contactForm button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.75em 1.5em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#contactForm button:hover {
+    background-color: #555;
+}
+
+.whatsapp-button {
+    display: inline-block;
+    margin-top: 1em;
+    padding: 0.75em 1.5em;
+    background-color: #25d366;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.whatsapp-button:hover {
+    background-color: #128c7e;
+    transform: translateY(-3px);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    margin-right: 10px;
+}

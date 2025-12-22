@@ -121,7 +121,7 @@ const engine = {
     sendWhatsApp: function() {
         if(!this.cart.length) return alert("Le panier est vide !");
         
-        const phoneNumber = "224600000000"; // TON NUMÉRO ICI
+        const phoneNumber = "224626928839"; // TON NUMÉRO ICI
         let msg = "Bonjour SolantaKCorp, je souhaite commander :\n\n";
         this.cart.forEach(p => msg += `• ${p.nom} (${p.prix})\n`);
         msg += `\n*TOTAL : ${document.getElementById('cart-total').innerText}*`;

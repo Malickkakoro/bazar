@@ -3,6 +3,39 @@
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('damn.png') center/cover no-repeat;
 }
 
+/* Empêcher le débordement horizontal */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Grille flexible pour mobile */
+@media (max-width: 576px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .card-img-top {
+        height: 180px; /* Moins haut sur mobile pour voir le texte */
+    }
+    
+    h1.display-3 {
+        font-size: 2.2rem; /* Titre plus petit pour tenir sur une ligne */
+    }
+
+    /* Boutons plus larges pour le pouce */
+    .btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+
+/* Optimisation du chargement des images */
+img {
+    content-visibility: auto; /* Le navigateur ne charge l'image que si elle est proche de l'écran */
+}
+
 .card {
     border-radius: 15px;
     border: none;

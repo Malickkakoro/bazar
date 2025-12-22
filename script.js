@@ -73,12 +73,28 @@ const engine = {
     showCart: function() { $('#cartModal').modal('show'); },
 
     sendWhatsApp: function() {
-        if(this.cart.length === 0) return alert("Panier vide !");
-        let msg = "Bonjour SolantaKCorp, je commande :\n";
-        this.cart.forEach(p => msg += `- ${p.nom} (${p.prix})\n`);
-        msg += "\nTotal: " + document.getElementById('cart-total').innerText;
-        window.open(`https://wa.me/+224626928839?text=${encodeURIComponent(msg)}`, '_blank');
-    }
+    if(!this.cart.length) return alert("Le panier est vide !");
+    
+    let msg = "Bonjour SolantaKCorp, je souhaite commander :\n\n";
+    this.cart.forEach(p => msg += `• ${p.nom} (${p.prix})\n`);
+    msg += `\n*TOTAL : ${document.getElementById('cart-total').innerText}*`;
+    
+    // Formatage spécial pour forcer l'ouverture de l'application mobile
+    const phoneNumber = "224626928839"; // Ton numéro sans + ni 00
+    const encodedMsg = encodeURIComponent(msg);
+    
+    // Cette URL est la plus efficace pour basculer vers l'APP sur mobile
+    const whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${encodedMsg}`;
+    const fallbackUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMsg}`;
+
+    // Tentative d'ouverture de l'app, sinon redirection web
+    window.location.href = whatsappUrl;
+    
+    // Sécurité : si après 500ms rien ne se passe (ex: sur PC), on ouvre le web
+    setTimeout(() => {
+        window.open(fallbackUrl, '_blank');
+    }, 500);
+}
 };
 
 document.getElementById('orderForm').onsubmit = function(e) {

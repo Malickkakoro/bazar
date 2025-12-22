@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "categorie": "motos",
+    "nom": "KTM Duke 390",
+    "prix": "1.500.000 FG",
+    "image": "chevi.jpg",
+    "desc": "Moto sportive légère, idéal pour la ville."
+  },
+  {
+    "id": 2,
+    "categorie": "phones",
+    "nom": "iPhone 15 Pro",
+    "prix": "12.000.000 FG",
+    "image": "Weixin Image_2025-12-22_002443_024.JPG",
+    "desc": "128Go, Titane Naturel, État Neuf."
+  },
+  {
+    "id": 3,
+    "categorie": "pc",
+    "nom": "HP EliteBook",
+    "prix": "4.500.000 FG",
+    "image": "hp.jpg",
+    "desc": "Processeur i7, 16Go RAM, SSD 512Go."
+  },
+  {
+    "id": 4,
+    "categorie": "vetements",
+    "nom": "Veste Cuir Luxe",
+    "prix": "800.000 FG",
+    "image": "veste.jpg",
+    "desc": "Veste en cuir véritable SolantaKCorp."
+  }
+]

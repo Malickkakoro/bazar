@@ -82,6 +82,39 @@
         </div>
     </div>
 </div>
+    <div class="container py-5 mt-5">
+    <div class="text-center">
+        <button class="btn btn-sm btn-outline-secondary" onclick="engine.authAdmin()">🔐 Accès Admin SolantaKCorp</button>
+    </div>
+
+    <section id="admin-section" class="mt-4 shadow-lg p-4 rounded bg-white" style="display: none;">
+        <h3 class="font-weight-bold border-bottom pb-2 text-dark">Gestionnaire de Stock</h3>
+        <div class="row">
+            <div class="col-lg-4 border-right">
+                <h5 class="text-info mb-3">Ajouter un produit</h5>
+                <input type="text" id="adm-nom" class="form-control mb-2" placeholder="Nom (ex: KTM Duke)">
+                <input type="text" id="adm-prix" class="form-control mb-2" placeholder="Prix (ex: 1.500.000 FG)">
+                <select id="adm-cat" class="form-control mb-2">
+                    <option value="motos">Motos</option>
+                    <option value="phones">Téléphones</option>
+                    <option value="pc">PC</option>
+                    <option value="vetements">Vêtements</option>
+                </select>
+                <input type="text" id="adm-img" class="form-control mb-2" placeholder="Image (ex: chevi.jpg)">
+                <textarea id="adm-desc" class="form-control mb-2" placeholder="Courte description"></textarea>
+                <button class="btn btn-info btn-block shadow-sm" onclick="engine.adminAdd()">Ajouter au catalogue</button>
+            </div>
+
+            <div class="col-lg-8">
+                <h5 class="text-info mb-3">Code à copier dans produits.json</h5>
+                <textarea id="json-output" class="form-control bg-light" rows="8" readonly></textarea>
+                <div class="alert alert-warning mt-2 small">
+                    ⚠️ <b>Action requise :</b> Après chaque modification, copiez le code ci-dessus et collez-le dans votre fichier <b>produits.json</b> sur GitHub pour sauvegarder définitivement.
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 
 <footer class="bg-dark text-white text-center py-4">
     <p>&copy; 2024 <strong>SolantaKCorp</strong> - Tous droits réservés.</p>

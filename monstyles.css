@@ -63,3 +63,25 @@ img {
 }
 
 .btn-info { background-color: #17a2b8; border: none; }
+.btn-admin-secret {
+    background: none;
+    border: none;
+    color: #bdc3c7; /* Gris très clair */
+    font-size: 0.7rem; /* Très petit */
+    text-decoration: underline;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0.5;
+}
+
+.btn-admin-secret:hover {
+    color: #7f8c8d; /* Devient un peu plus sombre au survol */
+    opacity: 1;
+    text-decoration: none;
+}
+
+/* Cache la section admin proprement par défaut */
+#admin-section {
+    border: 1px dashed #ddd;
+    background-color: #fcfcfc;
+}

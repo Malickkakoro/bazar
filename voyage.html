@@ -184,7 +184,195 @@
         const text = `*SOLANTAKFLYER - DEMANDE ÉTUDES*\n\n👤 Nom: ${nom}\n📞 Tel: ${tel}\n📅 Rentrée: ${rentree}\n💬 Message: ${msg}`;
         window.open(`https://wa.me/224626928839?text=${encodeURIComponent(text)}`, '_blank');
     }
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLANTAKFLYER | Études en Chine</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="monstyles.css">
+    <style>
+        /* HERO SECTION */
+        .hero-voyage {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=2070&auto=format&fit=crop') center/cover;
+            height: 50vh; color: white; display: flex; align-items: center; justify-content: center; text-align: center;
+        }
+        
+        /* CARROUSEL HORIZONTAL & DEZOOMÉ */
+        .carousel-item { 
+            height: 50vh; 
+            background-color: #333;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* C'est ici qu'on dézoome pour voir toute l'image sans couper */
+            background-color: #000;
+        }
+        
+        .card-service { border-left: 5px solid #17a2b8; transition: 0.3s; }
+        .card-service:hover { background: #f8f9fa; transform: scale(1.02); }
+        .card-annonce { border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 100%; }
+        
+        .btn-whatsapp-footer { border-radius: 50px; border-color: #25D366; color: #25D366; transition: 0.3s; }
+        .btn-whatsapp-footer:hover { background-color: #25D366; color: white; }
 
+        /* Flèche retour en haut */
+        #scrollTopBtn {
+            position: fixed; bottom: 30px; right: 30px; z-index: 99;
+            display: none; background-color: #17a2b8; color: white;
+            width: 50px; height: 50px; border-radius: 50%; border: none;
+            font-size: 24px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+<button onclick="topFunction()" id="scrollTopBtn">↑</button>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand font-weight-bold" href="index.html">SOLANTAK<span class="text-info">FLYER</span></a>
+        <a href="index.html" class="btn btn-outline-info btn-sm">Retour au Bazar</a>
+    </div>
+</nav>
+
+<div id="univCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <div class="carousel-inner">
+        <div class="carousel-item active"><img src="11.jpg" alt="Univ"></div>
+        <div class="carousel-item"><img src="2.jpg" alt="Univ"></div>
+        <div class="carousel-item"><img src="3.jpg" alt="Univ"></div>
+        <div class="carousel-item"><img src="4.jpg" alt="Univ"></div>
+        <div class="carousel-item"><img src="5.jpg" alt="Univ"></div>
+        <div class="carousel-item"><img src="6.jpg" alt="Univ"></div>
+        <div class="carousel-item"><img src="7.jpg" alt="Univ"></div>
+        <div class="carousel-item"><img src="8.jpg" alt="Univ"></div>
+        <div class="carousel-item"><img src="9.jpg" alt="Univ"></div>
+        <div class="carousel-item"><img src="10.jpg" alt="Univ"></div>
+    </div>
+    <a class="carousel-control-prev" href="#univCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#univCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
+<header class="hero-voyage">
+    <div class="container">
+        <h1 class="display-4 font-weight-bold">ÉTUDIER EN CHINE EN TOUTE SÉCURITÉ</h1>
+        <p class="lead">Accompagnement de A à Z jusqu'à l'obtention du visa.</p>
+        <button class="btn btn-info btn-lg mt-3" onclick="document.getElementById('form-visa').scrollIntoView({behavior: 'smooth'})">Débuter ma procédure</button>
+    </div>
+</header>
+
+<section id="annonces-voyage" class="py-5 bg-white">
+    <div class="container">
+        <h2 class="text-center mb-4 font-weight-bold">📢 Annonces & Opportunités</h2>
+        <div id="annonces-list-voyage" class="row">
+            </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h2 class="mb-4 text-dark font-weight-bold">Nos Services</h2>
+                <div class="card card-service p-3 mb-2 shadow-sm">Admission + JW garantis à 100%</div>
+                <div class="card card-service p-3 mb-2 shadow-sm">Assistance Visa complète</div>
+                <div class="card card-service p-3 mb-2 shadow-sm">Bourses (Complètes & Partielles)</div>
+                <div class="card card-service p-3 mb-2 shadow-sm">Billet d'avion inclus</div>
+                
+                <h2 class="mt-5 mb-4 text-dark font-weight-bold">Dossiers à fournir</h2>
+                <ul class="list-group shadow-sm">
+                    <li class="list-group-item">📄 Passeport valide</li>
+                    <li class="list-group-item">📄 Diplôme du Bac + Relevés (Anglais)</li>
+                    <li class="list-group-item">📄 Casier judiciaire & Examen médical</li>
+                    <li class="list-group-item">📄 Relevé bancaire (40.000.000 GNF)</li>
+                    <li class="list-group-item">📄 Vidéo de présentation en Anglais</li>
+                </ul>
+            </div>
+
+            <div class="col-md-5" id="form-visa">
+                <div class="card shadow-lg border-0 p-4 text-center">
+                    <h3 class="mb-4">Pré-inscription</h3>
+                    <p class="text-muted small">Remplissez et contactez-nous via WhatsApp</p>
+                    <button class="btn btn-success btn-block py-3 font-weight-bold" onclick="window.open('https://wa.me/224626928839')">
+                        Ouvrir WhatsApp pour Postuler
+                    </button>
+                    <p class="small text-muted mt-3">Solde payable après obtention du visa.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p class="mb-2">&copy; 2025 SolantaKflyer - Conakry, Guinée</p>
+        <p class="small mb-3 text-info font-weight-bold">Partenaire : SolantaKCorp | Chine Bourse CN</p>
+        <a href="https://wa.me/224626928839" target="_blank" class="btn btn-whatsapp-footer btn-sm px-4">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="18" class="mr-2">
+            Contacter : +224 626 92 88 39
+        </a>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Bouton retour en haut
+    window.onscroll = function() { if (document.documentElement.scrollTop > 300) { document.getElementById("scrollTopBtn").style.display = "block"; } else { document.getElementById("scrollTopBtn").style.display = "none"; } };
+    function topFunction() { window.scrollTo({top: 0, behavior: 'smooth'}); }
+
+    // GESTION DES ANNONCES (Correction)
+    async function loadAnnonces() {
+        const list = document.getElementById('annonces-list-voyage');
+        try {
+            const res = await fetch('produits.json');
+            const data = await res.json();
+            
+            if(data.annonces && data.annonces.length > 0) {
+                renderAnnonces(data.annonces);
+            } else {
+                showDefaultAnnonces();
+            }
+        } catch(e) {
+            showDefaultAnnonces(); // Si le fichier est absent ou vide
+        }
+    }
+
+    function renderAnnonces(annonces) {
+        const list = document.getElementById('annonces-list-voyage');
+        list.innerHTML = annonces.map(a => `
+            <div class="col-md-4 mb-4">
+                <div class="card card-annonce">
+                    <img src="${a.image}" class="card-img-top" style="height:250px; object-fit:contain; background:#f0f0f0;">
+                    <div class="card-body">
+                        <h6 class="font-weight-bold">${a.titre}</h6>
+                        <p class="small text-muted">${a.texte}</p>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function showDefaultAnnonces() {
+        const demo = [
+            { titre: "Bourse Zhengzhou 2026", texte: "Scolarité : 6400 RMB/an. Inscription ouverte !", image: "https://via.placeholder.com/300x400?text=Zhengzhou+Info" },
+            { titre: "Bourse Changchun 2026", texte: "Scolarité à 0 RMB possible ! Contactez-nous.", image: "https://via.placeholder.com/300x400?text=Changchun+Info" }
+        ];
+        renderAnnonces(demo);
+    }
+
+    window.onload = loadAnnonces;
+</script>
+
+</body>
+</html>
     window.onload = loadAnnonces;
 </script>
 

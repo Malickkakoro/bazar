@@ -7,22 +7,36 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="monstyles.css">
     <style>
+        /* Correction de l'image de fond (Lien fiable) */
         .hero-voyage {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.ibb.co/vY8p0mG/china-study.jpg') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=2070&auto=format&fit=crop') center/cover;
             height: 60vh; color: white; display: flex; align-items: center; justify-content: center; text-align: center;
         }
+        
+        /* Dimension ajustée du carrousel */
+        .carousel-item { height: 65vh; background-size: cover; background-position: center; }
+        
         .card-service { border-left: 5px solid #17a2b8; transition: 0.3s; }
         .card-service:hover { background: #f8f9fa; transform: scale(1.02); }
-        .badge-step { background: #17a2b8; color: white; border-radius: 50%; padding: 5px 12px; margin-right: 10px; }
         
-        /* Styles Carrousel et Annonces */
-        .carousel-item { height: 55vh; background-size: cover; background-position: center; }
         .card-annonce { border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
         .btn-whatsapp-footer { border-radius: 50px; border-color: #25D366; color: #25D366; transition: 0.3s; }
         .btn-whatsapp-footer:hover { background-color: #25D366; color: white; }
+
+        /* Flèche retour en haut */
+        #scrollTopBtn {
+            position: fixed; bottom: 30px; right: 30px; z-index: 99;
+            display: none; background-color: #17a2b8; color: white;
+            width: 50px; height: 50px; border-radius: 50%; border: none;
+            font-size: 24px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+        #scrollTopBtn:hover { background-color: #138496; transform: scale(1.1); }
     </style>
 </head>
 <body>
+
+<button onclick="topFunction()" id="scrollTopBtn" title="Retour en haut">↑</button>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
@@ -50,7 +64,7 @@
     <div class="container">
         <h1 class="display-4 font-weight-bold">ÉTUDIER EN CHINE EN TOUTE SÉCURITÉ</h1>
         <p class="lead">Accompagnement de A à Z jusqu'à l'obtention du visa.</p>
-        <button class="btn btn-info btn-lg mt-3" onclick="document.getElementById('form-visa').scrollIntoView()">Débuter ma procédure</button>
+        <button class="btn btn-info btn-lg mt-3" onclick="document.getElementById('form-visa').scrollIntoView({behavior: 'smooth'})">Débuter ma procédure</button>
     </div>
 </header>
 
@@ -107,11 +121,9 @@
 <footer class="bg-dark text-white text-center py-4">
     <div class="container">
         <p class="mb-2">&copy; 2025 SolantaKflyer - Conakry, Guinée</p>
-        
         <p class="small mb-3 text-info font-weight-bold">
             Partenaire : SolantaKCorp &nbsp;&nbsp; | &nbsp;&nbsp; Chine Bourse CN
         </p>
-
         <div class="mt-3">
             <a href="https://wa.me/224626928839" target="_blank" class="btn btn-whatsapp-footer btn-sm px-4">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="18" class="mr-2" alt="WhatsApp">
@@ -125,17 +137,33 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+    // Gestion du bouton Retour en Haut
+    window.onscroll = function() { scrollFunction() };
+    function scrollFunction() {
+        const btn = document.getElementById("scrollTopBtn");
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
+    }
+    function topFunction() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    // Chargement des annonces
     async function loadAnnonces() {
         try {
             const res = await fetch('produits.json');
             const data = await res.json();
             const list = document.getElementById('annonces-list-voyage');
             if(data.annonces && data.annonces.length > 0) {
+                list.innerHTML = '';
                 data.annonces.forEach(a => {
                     list.innerHTML += `
                     <div class="col-md-4">
                         <div class="card card-annonce h-100 text-center">
-                            <img src="${a.image}" class="card-img-top" style="height:180px; object-fit:cover;" onerror="this.src='https://via.placeholder.com/300x150'">
+                            <img src="${a.image}" class="card-img-top" style="height:200px; object-fit:cover;" onerror="this.src='https://via.placeholder.com/300x200'">
                             <div class="card-body">
                                 <h6 class="font-weight-bold">${a.titre}</h6>
                                 <p class="small text-muted mb-0">${a.texte}</p>
@@ -144,7 +172,7 @@
                     </div>`;
                 });
             }
-        } catch(e) { console.log("Prêt pour les annonces."); }
+        } catch(e) { console.log("Erreur chargement annonces."); }
     }
 
     function sendVisaWhatsApp() {
@@ -152,9 +180,7 @@
         const tel = document.getElementById('v-tel').value;
         const rentree = document.getElementById('v-rentree').value;
         const msg = document.getElementById('v-msg').value;
-
         if(!nom || !tel) return alert("Veuillez remplir votre nom et téléphone.");
-
         const text = `*SOLANTAKFLYER - DEMANDE ÉTUDES*\n\n👤 Nom: ${nom}\n📞 Tel: ${tel}\n📅 Rentrée: ${rentree}\n💬 Message: ${msg}`;
         window.open(`https://wa.me/224626928839?text=${encodeURIComponent(text)}`, '_blank');
     }

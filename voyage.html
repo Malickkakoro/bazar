@@ -34,7 +34,7 @@
             border: none; border-radius: 12px; border-left: 5px solid #17a2b8; 
             background: #fff; transition: all 0.3s ease; margin-bottom: 15px;
         }
-        .card-service:hover { transform: translateY(-5s px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); background: #fdfdfd; }
+        .card-service:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); background: #fdfdfd; }
 
         /* Dossiers List */
         .list-group-item { border: none; margin-bottom: 8px; border-radius: 8px !important; background: #f8f9fa; }
@@ -67,6 +67,10 @@
         }
         
         footer { border-top: 4px solid #17a2b8; }
+
+        /* Style bouton langue */
+        .lang-btn { cursor: pointer; color: #17a2b8 !important; font-weight: bold; border: 1px solid #17a2b8; padding: 2px 10px; border-radius: 20px; margin-right: 15px; transition: 0.3s; }
+        .lang-btn:hover { background: #17a2b8; color: white !important; }
     </style>
 </head>
 <body>
@@ -76,7 +80,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
         <a class="navbar-brand font-weight-bold" href="index.html">SOLANTAK<span class="text-info-custom">FLYER</span></a>
-        <a href="index.html" class="btn btn-outline-info btn-sm rounded-pill px-4">Retour Boutique</a>
+        <div class="d-flex align-items-center">
+            <span class="lang-btn" onclick="toggleLanguage()" id="btn-lang">EN</span>
+            <a href="index.html" class="btn btn-outline-info btn-sm rounded-pill px-4" data-fr="Retour Boutique" data-en="Back to Shop">Retour Boutique</a>
+        </div>
     </div>
 </nav>
 
@@ -97,15 +104,15 @@
 
 <header class="hero-voyage">
     <div class="container">
-        <h1 class="display-4 font-weight-bold">ÉTUDIER EN CHINE EN TOUTE SÉCURITÉ</h1>
-        <p class="lead mb-4">Votre avenir académique commence ici. Accompagnement expert de A à Z.</p>
-        <button class="btn btn-info btn-lg px-5 rounded-pill shadow" onclick="document.getElementById('form-visa').scrollIntoView({behavior: 'smooth'})">Postuler maintenant</button>
+        <h1 class="display-4 font-weight-bold" data-fr="ÉTUDIER EN CHINE EN TOUTE SÉCURITÉ" data-en="STUDY IN CHINA SAFELY">ÉTUDIER EN CHINE EN TOUTE SÉCURITÉ</h1>
+        <p class="lead mb-4" data-fr="Votre avenir académique commence ici. Accompagnement expert de A à Z." data-en="Your academic future starts here. Expert support from A to Z.">Votre avenir académique commence ici. Accompagnement expert de A à Z.</p>
+        <button class="btn btn-info btn-lg px-5 rounded-pill shadow" onclick="document.getElementById('form-visa').scrollIntoView({behavior: 'smooth'})" data-fr="Postuler maintenant" data-en="Apply now">Postuler maintenant</button>
     </div>
 </header>
 
 <section id="annonces-voyage" class="py-5">
     <div class="container">
-        <h2 class="section-title text-center mx-auto">📢 Opportunités & Bourses</h2>
+        <h2 class="section-title text-center mx-auto" data-fr="📢 Opportunités & Bourses" data-en="📢 Opportunities & Scholarships">📢 Opportunités & Bourses</h2>
         <div id="annonces-list-voyage" class="row mt-4"></div>
     </div>
 </section>
@@ -114,42 +121,42 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <h2 class="section-title">Nos Services Premium</h2>
-                <div class="card card-service p-3 shadow-sm"><i class="fas fa-check-circle text-info mr-2"></i> Admission + JW garantis à 100%</div>
-                <div class="card card-service p-3 shadow-sm"><i class="fas fa-passport text-info mr-2"></i> Assistance Visa complète</div>
-                <div class="card card-service p-3 shadow-sm"><i class="fas fa-graduation-cap text-info mr-2"></i> Bourses (Complètes & Partielles)</div>
-                <div class="card card-service p-3 shadow-sm"><i class="fas fa-plane text-info mr-2"></i> Réservation Billet d'avion</div>
-                <div class="card card-service p-3 shadow-sm"><i class="fas fa-university text-info mr-2"></i> Formation sur-mesure selon l'université</div>
+                <h2 class="section-title" data-fr="Nos Services Premium" data-en="Our Premium Services">Nos Services Premium</h2>
+                <div class="card card-service p-3 shadow-sm"><i class="fas fa-check-circle text-info mr-2"></i> <span data-fr="Admission + JW garantis à 100%" data-en="Admission + JW 100% guaranteed">Admission + JW garantis à 100%</span></div>
+                <div class="card card-service p-3 shadow-sm"><i class="fas fa-passport text-info mr-2"></i> <span data-fr="Assistance Visa complète" data-en="Full Visa Assistance">Assistance Visa complète</span></div>
+                <div class="card card-service p-3 shadow-sm"><i class="fas fa-graduation-cap text-info mr-2"></i> <span data-fr="Bourses (Complètes & Partielles)" data-en="Scholarships (Full & Partial)">Bourses (Complètes & Partielles)</span></div>
+                <div class="card card-service p-3 shadow-sm"><i class="fas fa-plane text-info mr-2"></i> <span data-fr="Réservation Billet d'avion" data-en="Flight Ticket Booking">Réservation Billet d'avion</span></div>
+                <div class="card card-service p-3 shadow-sm"><i class="fas fa-university text-info mr-2"></i> <span data-fr="Formation sur-mesure selon l'université" data-en="Customized training by university">Formation sur-mesure selon l'université</span></div>
 
-                <h2 class="section-title mt-5">Dossiers à fournir</h2>
+                <h2 class="section-title mt-5" data-fr="Dossiers à fournir" data-en="Required Documents">Dossiers à fournir</h2>
                 <div class="row">
                     <div class="col-12">
                         <ul class="list-group shadow-sm">
-                            <li class="list-group-item"><i class="fas fa-id-card"></i> Passeport valide</li>
-                            <li class="list-group-item"><i class="fas fa-file-invoice"></i> Diplôme du Bac + Relevés (Anglais)</li>
-                            <li class="list-group-item"><i class="fas fa-user-shield"></i> Casier judiciaire & Examen médical</li>
-                            <li class="list-group-item"><i class="fas fa-hand-holding-usd"></i> Relevé bancaire (40.000.000 GNF) & Certificat de prise en charge</li>
-                            <li class="list-group-item"><i class="fas fa-video"></i> Vidéo de présentation en Anglais</li>
-                            <li class="list-group-item"><i class="fas fa-file-alt"></i> CV à jour</li>
+                            <li class="list-group-item"><i class="fas fa-id-card"></i> <span data-fr="Passeport valide" data-en="Valid Passport">Passeport valide</span></li>
+                            <li class="list-group-item"><i class="fas fa-file-invoice"></i> <span data-fr="Diplôme du Bac + Relevés (Anglais)" data-en="High School Diploma + Transcripts (English)">Diplôme du Bac + Relevés (Anglais)</span></li>
+                            <li class="list-group-item"><i class="fas fa-user-shield"></i> <span data-fr="Casier judiciaire & Examen médical" data-en="Criminal record & Medical exam">Casier judiciaire & Examen médical</span></li>
+                            <li class="list-group-item"><i class="fas fa-hand-holding-usd"></i> <span data-fr="Relevé bancaire (40.000.000 GNF) & Certificat de prise en charge" data-en="Bank statement (40M GNF) & Sponsorship letter">Relevé bancaire (40.000.000 GNF) & Certificat de prise en charge</span></li>
+                            <li class="list-group-item"><i class="fas fa-video"></i> <span data-fr="Vidéo de présentation en Anglais" data-en="Introduction video in English">Vidéo de présentation en Anglais</span></li>
+                            <li class="list-group-item"><i class="fas fa-file-alt"></i> <span data-fr="CV à jour" data-en="Updated CV">CV à jour</span></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="card card-frais p-4 mt-5 shadow-lg">
-                    <h2 class="text-white mb-4"><i class="fas fa-coins mr-2"></i> Frais & Conditions</h2>
+                    <h2 class="text-white mb-4"><i class="fas fa-coins mr-2"></i> <span data-fr="Frais & Conditions" data-en="Fees & Conditions">Frais & Conditions</span></h2>
                     <ul class="list-group border-0">
-                        <li class="list-group-item"><i class="fas fa-tag"></i> <b>Total Voyage :</b> 25.000.000 GNF (Logement 1 an inclus)</li>
-                        <li class="list-group-item"><i class="fas fa-first-aid"></i> <b>Départ procédure :</b> 5.000.000 GNF</li>
-                        <li class="list-group-item"><i class="fas fa-lock"></i> <b>Garantie avant Solde :</b> 20.000.000 GNF (Après obtention Visa) </li>
-                        <li class="list-group-item"><i class="fas fa-undo"></i> <b>NB :</b> Remboursement 50% en cas d'échec (admission + JW)</li>
+                        <li class="list-group-item"><i class="fas fa-tag"></i> <b data-fr="Total Voyage :" data-en="Total Cost:">Total Voyage :</b> 25.000.000 GNF <span data-fr="(Logement 1 an inclus)" data-en="(1 year housing included)">(Logement 1 an inclus)</span></li>
+                        <li class="list-group-item"><i class="fas fa-first-aid"></i> <b data-fr="Départ procédure :" data-en="Initial deposit:">Départ procédure :</b> 5.000.000 GNF</li>
+                        <li class="list-group-item"><i class="fas fa-lock"></i> <b data-fr="Garantie avant Solde :" data-en="Balance after Visa:">Garantie avant Solde :</b> 20.000.000 GNF <span data-fr="(Après obtention Visa)" data-en="(After obtaining Visa)">(Après obtention Visa)</span></li>
+                        <li class="list-group-item"><i class="fas fa-undo"></i> <b>NB :</b> <span data-fr="Remboursement 50% en cas d'échec (admission + JW)" data-en="50% refund in case of failure (admission + JW)">Remboursement 50% en cas d'échec (admission + JW)</span></li>
                     </ul>
                 </div>
 
-                <h2 class="section-title mt-5">Informations Visa Étudiant</h2>
+                <h2 class="section-title mt-5" data-fr="Informations Visa Étudiant" data-en="Student Visa Info">Informations Visa Étudiant</h2>
                 <div class="alert alert-info border-0 shadow-sm" style="border-radius:15px;">
-                    <p class="mb-0"><i class="fas fa-info-circle mr-2"></i> Permet d'étudier, de circuler et de faire du business légal (Achat/Expédition). <b>Note :</b> Le travail salarié est strictement interdit.</p>
+                    <p class="mb-0"><i class="fas fa-info-circle mr-2"></i> <span data-fr="Permet d'étudier, de circuler et de faire du business légal (Achat/Expédition). Note : Le travail salarié est strictement interdit." data-en="Allows studying, traveling and legal business (Buying/Shipping). Note: Paid work is strictly prohibited.">Permet d'étudier, de circuler et de faire du business légal (Achat/Expédition). <b>Note :</b> Le travail salarié est strictement interdit.</span></p>
                     <hr>
-                    <p class="mb-0 font-weight-bold"><i class="fas fa-hourglass-half mr-2"></i> Durée totale : ~1 mois et 2 semaines.</p>
+                    <p class="mb-0 font-weight-bold"><i class="fas fa-hourglass-half mr-2"></i> <span data-fr="Durée totale : ~1 mois et 2 semaines." data-en="Total duration: ~1 month and 2 weeks.">Durée totale : ~1 mois et 2 semaines.</span></p>
                 </div>
             </div>
 
@@ -159,14 +166,14 @@
                         <div class="bg-light d-inline-block p-3 rounded-circle mb-3">
                             <i class="fab fa-whatsapp fa-3x text-success"></i>
                         </div>
-                        <h3>Pré-inscription</h3>
-                        <p class="text-muted">Échangez directement avec un conseiller</p>
+                        <h3 data-fr="Pré-inscription" data-en="Pre-registration">Pré-inscription</h3>
+                        <p class="text-muted" data-fr="Échangez directement avec un conseiller" data-en="Chat directly with an advisor">Échangez directement avec un conseiller</p>
                     </div>
                     <button class="btn btn-success btn-block py-3 font-weight-bold shadow-sm" onclick="window.open('https://wa.me/224626928839')">
-                        <i class="fab fa-whatsapp mr-2"></i> Postuler via WhatsApp
+                        <i class="fab fa-whatsapp mr-2"></i> <span data-fr="Postuler via WhatsApp" data-en="Apply via WhatsApp">Postuler via WhatsApp</span>
                     </button>
                     <div class="mt-4 p-3 bg-light rounded text-center">
-                        <small class="text-dark font-italic">"Votre confiance est notre priorité. Paiement final après visa."</small>
+                        <small class="text-dark font-italic" data-fr='"Votre confiance est notre priorité. Paiement final après visa."' data-en='"Your trust is our priority. Final payment after visa."'>"Votre confiance est notre priorité. Paiement final après visa."</small>
                     </div>
                 </div>
             </div>
@@ -177,13 +184,13 @@
 <footer class="bg-dark text-white py-5">
     <div class="container text-center">
         <h4 class="font-weight-bold">SOLANTAK<span class="text-info-custom">FLYER</span></h4>
-        <p class="text-muted small mb-4">Partenaire officiel : SolantaKCorp | Chine Bourse CN</p>
+        <p class="text-muted small mb-4" data-fr="Partenaire officiel : SolantaKCorp | Chine Bourse CN" data-en="Official Partner: SolantaKCorp | China Scholarship CN">Partenaire officiel : SolantaKCorp | Chine Bourse CN</p>
         <div class="mb-4">
             <a href="https://wa.me/224626928839" class="btn btn-outline-light rounded-pill px-4">
                 <i class="fab fa-whatsapp mr-2 text-success"></i> +224 626 92 88 39
             </a>
         </div>
-        <p class="mb-0 small opacity-50">&copy; 2025 SolantaKflyer - Tous droits réservés.</p>
+        <p class="mb-0 small opacity-50">&copy; 2025 SolantaKflyer - <span data-fr="Tous droits réservés." data-en="All rights reserved.">Tous droits réservés.</span></p>
     </div>
 </footer>
 
@@ -191,6 +198,17 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+    // SCRIPT BILINGUE
+    let currentLang = 'fr';
+    function toggleLanguage() {
+        currentLang = (currentLang === 'fr') ? 'en' : 'fr';
+        document.getElementById('btn-lang').innerText = (currentLang === 'fr') ? 'EN' : 'FR';
+        document.querySelectorAll('[data-fr]').forEach(el => {
+            el.innerText = el.getAttribute('data-' + currentLang);
+        });
+        loadAnnonces(); // Recharger les annonces pour la langue
+    }
+
     window.onscroll = function() { 
         if (document.documentElement.scrollTop > 300) { 
             document.getElementById("scrollTopBtn").style.display = "block"; 
@@ -225,10 +243,14 @@
     }
 
     function showDefaultAnnonces() {
-        const demo = [
+        const demo = (currentLang === 'fr') ? [
             { titre: "Bourse Zhengzhou 2026", texte: "Scolarité : 6400 RMB/an. Inscription ouverte !", image: "zhengzhou.jpg"},
             { titre: "Bourse Changchun 2026", texte: "Scolarité à 0 RMB possible ! Logement inclus.", image: "Changchun.jpg" },
             { titre: "Programme d'Études", texte: "Filières Business, Ingénierie & Langues.", image: "programme.png" }
+        ] : [
+            { titre: "Zhengzhou Scholarship 2026", texte: "Tuition: 6400 RMB/year. Open now!", image: "zhengzhou.jpg"},
+            { titre: "Changchun Scholarship 2026", texte: "0 RMB tuition possible! Housing included.", image: "Changchun.jpg" },
+            { titre: "Study Program", texte: "Business, Engineering & Languages.", image: "programme.png" }
         ];
         renderAnnonces(demo);
     }

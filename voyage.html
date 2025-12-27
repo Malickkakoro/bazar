@@ -47,6 +47,29 @@
         .lang-btn:hover { background: var(--primary); color: white !important; }
 
         footer { background: var(--dark); color: white; padding: 60px 0 30px; border-top: 5px solid var(--primary); }
+        .z-index-container { position: relative; padding-bottom: 50px; }
+    .video-frame { position: relative; z-index: 1; max-width: 850px; margin: auto; border-radius: 15px; overflow: hidden; }
+    
+    .photo-grid-overlap { position: relative; z-index: 10; margin-top: -60px; }
+    
+    .overlap-card { 
+        cursor: pointer; 
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+        border: 5px solid white !important; 
+        overflow: hidden;
+    }
+    .overlap-card:hover { 
+        transform: translateY(-15px) scale(1.03); 
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important; 
+    }
+
+    /* Style de la boîte d'agrandissement (Modal) */
+    .img-modal {
+        display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
+        background-color: rgba(0,0,0,0.9); align-items: center; justify-content: center;
+    }
+    .img-modal img { max-width: 90%; max-height: 80%; border: 3px solid white; border-radius: 10px; }
+    .close-modal { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -84,36 +107,40 @@
     </div>
 </header>
 
-<section class="py-5 bg-white text-center">
+<section class="py-5 bg-white text-center z-index-container">
     <div class="container">
         <h2 class="section-title mx-auto" data-fr="🎥 Vie Étudiante & Loisirs" data-en="🎥 Student Life & Leisure">🎥 Vie Étudiante & Loisirs</h2>
         
-        <div class="video-container shadow-lg rounded mb-4" style="max-width: 850px; margin: auto; background: #000; overflow: hidden;">
+        <div class="video-frame shadow-lg">
             <video controls class="w-100" style="display: block;">
-                <source src="etude.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la vidéo.
+                <source src="yanglong_2min_reduced.mp4" type="video/mp4">
             </video>
         </div>
 
-        <div class="row mt-4">
+        <div class="row photo-grid-overlap px-2">
             <div class="col-md-4 mb-3">
-                <div class="card shadow-sm border-0">
-                    <img src="sport.jpg" class="img-fluid rounded" alt="Sport en Chine" style="height: 200px; object-fit: cover;">
+                <div class="card overlap-card shadow-lg rounded" onclick="openFullImage('sport.jpg')">
+                    <img src="sport.jpg" class="img-fluid" style="height: 250px; object-fit: cover;">
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <div class="card shadow-sm border-0">
-                    <img src="etude_vie.jpg" class="img-fluid rounded" alt="Études en Chine" style="height: 200px; object-fit: cover;">
+                <div class="card overlap-card shadow-lg rounded" onclick="openFullImage('etude_vie.jpg')">
+                    <img src="etude_vie.jpg" class="img-fluid" style="height: 250px; object-fit: cover;">
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <div class="card shadow-sm border-0">
-                    <img src="tourisme.jpg" class="img-fluid rounded" alt="Tourisme en Chine" style="height: 200px; object-fit: cover;">
+                <div class="card overlap-card shadow-lg rounded" onclick="openFullImage('tourisme.jpg')">
+                    <img src="tourisme.jpg" class="img-fluid" style="height: 250px; object-fit: cover;">
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<div id="myModal" class="img-modal" onclick="this.style.display='none'">
+    <span class="close-modal">&times;</span>
+    <img id="imgFull" src="">
+</div>
 
 
 <section class="py-5 bg-light">
@@ -255,6 +282,20 @@
         document.getElementById("scrollTopBtn").style.display = (document.documentElement.scrollTop > 300) ? "block" : "none";
     };
     function topFunction() { window.scrollTo({top: 0, behavior: 'smooth'}); }
+    // Fonction pour ouvrir l'image en grand
+    function openFullImage(src) {
+        const modal = document.getElementById('myModal');
+        const fullImg = document.getElementById('imgFull');
+        fullImg.src = src;
+        modal.style.display = 'flex';
+    }
+
+    // Fermer avec la touche Echap
+    document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape") {
+            document.getElementById('myModal').style.display = 'none';
+        }
+    });
 </script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
